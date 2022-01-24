@@ -8,24 +8,29 @@ You can use this widget to create panels that are dockable on different places i
 
 ### 1.1 Browser Example
 
-
 <img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_browser_example.png" width="600"/>
 
 ## 2. Usage
 
-* Place the widget anywere on the page, if you want to save the layout you have to place the widget inside a datagrid with an entity that has a unlimited string attribute.
+* Place the widget anywhere on the page, if you want to save the layout you have to place the widget inside a dataview with an entity that has a unlimited string attribute.
 * Make sure the parent element has height specified
 * Create dockable panels and fill them with the desired content. Content can consist out of static or dynamic content such as data views and listviews.
 * Adjust panel behaviour to your likings
 
-### 2.1 Modeler example
+### 2.1 Features
+* Panels can float above other panels.
+* Panels can be dragged and dropped.
+* Panels can be hidden and made visible again inside another panel.
+* Layout can be saved
+
+### 2.2 Modeler example
 
 <img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_modeler_example.png" width="600"/>
 
 
-### 2.2 Configuration example
-<img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_general_tab.png" width="400"/>
-<img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_translate_tab.png" width="400"/>
+### 2.3 Configuration example
+<img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_general_tab.png" width="600"/>
+<img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_translate_tab.png" width="600"/>
 
 ## 3. Use Cases
 
