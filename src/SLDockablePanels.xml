@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="sl.sldockablepanels.SLDockablePanels" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>SL - Dockable Panels</name>
+    <description>Dockable panels widget</description>
+    <properties>
+        <propertyGroup caption="General">
+            <propertyGroup caption="Panel content">
+                <property key="panels" type="object" isList="true">
+                    <caption>Dockable panels</caption>
+                    <description/>
+                    <properties>
+                        <propertyGroup caption="Panel">
+                            <property key="name" type="textTemplate">
+                                <caption>Panel name</caption>
+                                <description>Name of panel</description>
+                                <translations>
+                                    <translation lang="en_US"></translation>
+                                    <translation lang="nl_NL"></translation>
+                                </translations>
+                            </property>
+                            <property key="content" type="widgets" required="false">
+                                <caption>Panel content</caption>
+                                <description>Place content inside this container to show inside the dockable panel</description>
+                            </property>
+                        </propertyGroup>
+                    </properties>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Panel behavior">
+                <property key="editable" type="expression" defaultValue="true">
+                    <caption>Editable</caption>
+                    <description>If false then all behavior features are turned off</description>
+                    <returnType type="Boolean" />
+                </property>
+                <property key="dockable" type="expression" defaultValue="true">
+                    <caption>Dockable</caption>
+                    <description>If false then panels cannot be docked inside other panels</description>
+                    <returnType type="Boolean" />
+                </property>
+                <property key="floatable" type="expression" defaultValue="true">
+                    <caption>Floatable</caption>
+                    <description>If false then panels are not floatable</description>
+                    <returnType type="Boolean" />
+                </property>
+                <property key="sortable" type="expression" defaultValue="true">
+                    <caption>Sortable</caption>
+                    <description>If false then tabs inside a panel are not sortable</description>
+                    <returnType type="Boolean" />
+                </property>
+                <property key="closable" type="expression" defaultValue="true">
+                    <caption>Closable</caption>
+                    <description>If false then panels cannot be closed</description>
+                    <returnType type="Boolean" />
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Panel layout">
+                <property key="savedLayout" type="attribute" onChange="onLayoutSavedAction" required="false">
+                    <caption>Saved layout</caption>
+                    <description>Specify attribute to save the panel layout after each panel position change</description>
+                    <attributeTypes>
+                        <attributeType name="String"/>
+                    </attributeTypes>
+                </property>
+                <property key="onLayoutSavedAction" type="action" required="false">
+                    <caption>On save layout</caption>
+                    <description>Action to be performed when layout is saved in given attribute</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Translate strings">
+            <propertyGroup caption="Hidden tabs popover">
+                <property key="deletedTabsTitle" type="textTemplate">
+                    <caption>Title</caption>
+                    <description>Title for the deleted tabs popover</description>
+                    <translations>
+                        <translation lang="en_US">Hidden tabs</translation>
+                        <translation lang="nl_NL">Verborgen tabs</translation>
+                    </translations>
+                </property>
+                <property key="deletedTabsEmpty" type="textTemplate">
+                    <caption>Empty state</caption>
+                    <description>Empty state for the hidden tabs popover</description>
+                    <translations>
+                        <translation lang="en_US">No hidden tabs</translation>
+                        <translation lang="nl_NL">Geen verborgen tabs</translation>
+                    </translations>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>

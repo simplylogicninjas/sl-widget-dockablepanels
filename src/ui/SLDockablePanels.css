@@ -1,0 +1,203 @@
+.dockable-panel-container {
+    width: 100%;
+    height: 100%;
+
+    --color-primary: #264ae5;
+    --color-gray: #787d87;
+    --color-gray-light: #a9acb3;
+    --color-gray-lighter: #f8f8f8;
+    --color-gray-primary: #e7e7e9;
+    --font-family: sans-serif;
+}
+
+/** RC-Dock styling overrides */
+.dock-top .dock-bar {
+    background: var(--color-gray-lighter);
+    border-color: var(--color-gray-primary);
+}
+
+.dock-tab {
+    background: var(--color-gray-lighter);
+}
+
+.dock-tab:hover {
+    color: var(--color-primary);
+}
+
+.dock-tab > div {
+    outline-color: var(--color-primary);
+}
+
+.dock-tab-active, .dock-tab-active:hover {
+    color: var(--color-primary);
+}
+
+.dock-ink-bar {
+    background: var(--color-primary);
+}
+
+.dock-tab-close-btn {
+    color: var(--color-gray);
+    font-family: var(--font-family);
+}
+
+.dock-tab-close-btn::before {
+    content: "✖"
+}
+
+.dock-tab-close-btn:hover, .dock-tab-close-btn:focus {
+    transform: none;
+    color: var(--color-gray);
+}
+
+.dock-nav-more {
+    display: flex;
+}
+
+.dock-dropdown-menu {
+    box-shadow: none;
+    filter: drop-shadow(var(--box-shadow, 0 0 4px rgba(0, 0, 0, .25)));
+    color: var(--color, #000);
+    background: var(--bg, #fff);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: var(--font-size, 1.4rem);
+}
+
+.dock-dropdown-menu:empty {
+    display: none;
+}
+
+.dock-dropdown-menu-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border: 0;
+    background: none;
+    padding: .5rem;
+    font-size: 1.4rem;
+    color: #000;
+}
+
+.dock-dropdown-menu-item span {
+    display: block;
+    width: 100%;
+}
+
+.dock-dropdown-menu-item:hover {
+    background: rgba(0, 0, 0, .15);
+    border-radius: 4px;
+}
+
+.dock-dropdown-menu-item .drag-initiator {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    justify-content: space-between;
+}
+
+.dock-dropdown-menu-item .dock-tab-close-btn {
+    position: static;
+}
+
+.dock-drop-layer .dock-drop-square {
+    font-family: var(--font-family);
+    color: var(--color-gray);
+    border-color: var(--color-gray-light);
+    border-radius: 2px;
+}
+
+.dock-drop-layer .dock-drop-square .dock-drop-square-box {
+    border-color: transparent;
+}
+
+.dock-drop-layer .dock-drop-square-dropping {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.more-button-container {
+    display: flex;
+}
+
+.more-button {
+    background: none;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.6rem;
+}
+
+.more-button:disabled {
+    opacity: .5;
+}
+
+.icon {
+    width: 1em;
+}
+
+.removed-tabs-menu {
+    filter: drop-shadow(var(--box-shadow, 0 0 4px rgba(0, 0, 0, .25)));
+    z-index: 9999999;
+    padding: 4px 0 4px 0;
+}
+
+.removed-tabs-menu.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .1s ease-in, visibility .1s ease-in;
+}
+
+.removed-tabs-menu.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.removed-tabs-menu__content {
+    color: var(--color, #000);
+    background: var(--bg, #fff);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: var(--font-size, 1.4rem);
+}
+
+.removed-tabs-list__title {
+    display: block;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: .25rem;
+}
+
+.removed-tabs-list__empty {
+    font-size: 1.4rem;
+    padding-left: 4px;
+}
+
+.removed-tabs-list__items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 -4px;
+}
+
+.removed-tabs-list__button {
+    display: flex;
+    width: calc(100% + 4px);
+    align-items: center;
+    border: 0;
+    background: none;
+    padding: .5rem;
+    font-size: 1.6rem;
+    min-width: 120px;
+}
+
+.removed-tabs-list__button span {
+    margin-right: auto;
+    font-size: 1.4rem;
+}
+
+.removed-tabs-list__button:hover {
+    background: rgba(0, 0, 0, .15);
+    border-radius: 4px;
+}
