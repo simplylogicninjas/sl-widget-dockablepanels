@@ -22,7 +22,7 @@ You can use this widget to create panels that are dockable on different places i
 * Panels can float above other panels.
 * Panels can be dragged and dropped.
 * Panels can be hidden and made visible again inside another panel.
-* Panel-state is cached (Panels will retain content on dragging)
+* Panel state is cached (Panels will retain content on dragging)
 * Layout can be saved.
 
 ### 2.2 Modeler example
