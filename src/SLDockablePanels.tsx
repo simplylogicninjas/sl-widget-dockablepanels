@@ -69,7 +69,8 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
                     title: panelNameValue,
                     content: panel.content as ReactElement,
                     closable: behaviour.closable,
-                    group
+                    group,
+                    cached: true
                 };
             })
         );
@@ -91,8 +92,6 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
             getBehavior(!!editable.value, !!dockable.value, !!floatable.value, !!sortable.value, !!closable.value)
         );
     }, [editable, dockable, floatable, sortable, closable]);
-
-    console.log(behaviour);
 
     return (
         <div className={getClassNames()} style={style}>
