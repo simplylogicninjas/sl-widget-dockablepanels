@@ -24,6 +24,7 @@ You can use this widget to create panels that are dockable on different places i
 * Panels can be hidden and made visible again inside another panel.
 * Panel state is cached (Panels will retain content on dragging)
 * Layout can be saved.
+* Supports listviews as content starting with Mendix version 9.6.0
 
 ### 2.2 Modeler example
 
