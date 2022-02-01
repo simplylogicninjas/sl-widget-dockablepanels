@@ -8,7 +8,7 @@ You can use this widget to create panels that are dockable on different places i
 
 ### 1.1 Browser Example
 
-<table><tbody><tr><td>Example 1</td><td>Example 2</td><td>Example 3</td></tr><tr><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_browser_example.png" width="300"></td><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_drag_panel.png" width="300"></td><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_hidden_tabs.png" width="300"></td></tr></tbody></table>
+<table><tbody><tr><td>Example 1</td><td>Example 2</td><td>Example 3</td></tr><tr><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockables_browser_example.png" width="300"></td><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_drag_panel.png" width="300"></td><td><img src="https://raw.githubusercontent.com/simplylogicninjas/sl-widget-dockablepanels/main/docs/images/dockablepanels_hidden_tabs.png" width="300"></td></tr></tbody></table>
 
 ## 2\. Usage
 
