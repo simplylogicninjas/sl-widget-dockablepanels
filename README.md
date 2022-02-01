@@ -40,6 +40,4 @@ You can use this widget to create panels that are dockable on different places i
 
 ## 4\. Customization
 
-To customize the content-container you can edit the styling with css using the classname:
-
-* .sl-dockablepanels-container
+Add a classname to the widget the adjust the widget to your likings.
