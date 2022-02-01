@@ -74,7 +74,7 @@
             <propertyGroup caption="Hidden tabs popover">
                 <property key="deletedTabsTitle" type="textTemplate">
                     <caption>Title</caption>
-                    <description>Title for the deleted tabs popover</description>
+                    <description>Title for the hidden tabs popover</description>
                     <translations>
                         <translation lang="en_US">Hidden tabs</translation>
                         <translation lang="nl_NL">Verborgen tabs</translation>
