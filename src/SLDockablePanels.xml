@@ -21,6 +21,11 @@
                                     <translation lang="nl_NL"></translation>
                                 </translations>
                             </property>
+                            <property key="visible" type="expression" defaultValue="true">
+                                <caption>Visibility</caption>
+                                <description>If true, the panel is visible for the user. If false, the panel will be removed</description>
+                                <returnType type="Boolean" />
+                            </property>
                             <property key="content" type="widgets" required="false">
                                 <caption>Panel content</caption>
                                 <description>Place content inside this container to show inside the dockable panel</description>

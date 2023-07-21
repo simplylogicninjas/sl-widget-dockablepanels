@@ -8,11 +8,13 @@ import { DynamicValue, EditableValue } from "mendix";
 
 export interface PanelsType {
     name: DynamicValue<string>;
+    visible: DynamicValue<boolean>;
     content?: ReactNode;
 }
 
 export interface PanelsPreviewType {
     name: string;
+    visible: string;
     content: { widgetCount: number; renderer: ComponentType<{ caption?: string }> };
 }
 

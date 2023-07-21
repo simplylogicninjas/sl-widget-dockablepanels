@@ -11,6 +11,29 @@
     --sl-dockablepanels-font-family: sans-serif;
 }
 
+.dock-layout-container {
+    width: inherit;
+    height: inherit;
+    min-height: inherit;
+}
+
+.dock-pane-cache {
+    overflow-y: auto;
+}
+
+.dock-layout-container.notClosable .dock-tab-close-btn {
+    display: none;
+}
+
+.dock-layout-container.notSortable .dock-drop-indicator {
+    opacity: 0 !important;
+    display: none !important;
+}
+
+.dock-layout-container.notResizable .dock-divider {
+    pointer-events: none;
+}
+
 /** RC-Dock styling overrides */
 .dock-top .dock-bar {
     background: var(--sl-dockablepanels-color-gray-lighter);

@@ -1,13 +1,13 @@
-import { ReactElement, createElement, useState, useEffect } from "react";
+import { ReactElement, createElement, useState, useEffect, useRef } from "react";
+import {ValueStatus} from "mendix";
 
-import { SLDockablePanelsContainerProps } from "../typings/SLDockablePanelsProps";
+import { PanelsType, SLDockablePanelsContainerProps } from "../typings/SLDockablePanelsProps";
 
-import { DockablePanels } from "./components/DockablePanels";
+import { CustomTabData, DockablePanels } from "./components/DockablePanels";
 
 import "rc-dock/dist/rc-dock.css";
 import "./ui/SLDockablePanels.css";
 
-import { TabData } from "rc-dock";
 import classNames from "classnames";
 
 const getBehavior = (
@@ -47,33 +47,41 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
         deletedTabsTitle
     } = props;
 
+    const panelsRef = useRef<PanelsType[]>([]);
+    const layoutRef = useRef<string>();
+
+    const [layout, setLayout] = useState<string>();
+
     const [behaviour, setBehaviour] = useState(
         getBehavior(!!editable.value, !!dockable.value, !!floatable.value, !!sortable.value, !!closable.value)
     );
-    const [tabs, setTabs] = useState<TabData[]>([]);
+    const [tabs, setTabs] = useState<CustomTabData[]>([]);
     const onLayoutChange = (layout: string) => {
-        if (savedLayout) {
+        if (savedLayout && layoutRef.current !== layout) {
             savedLayout.setValue(layout);
         }
     };
 
     const initDockablePanels = () => {
-        setTabs(
-            panels.map(panel => {
-                const panelNameValue = panel.name.value ? panel.name.value : "Panel";
-                const panelName = `${name.toLowerCase()}_${panelNameValue.toLowerCase().replace(" ", "_")}`;
-                const group = `${!behaviour.sortable ? panelName : "panel"}`;
+        panelsRef.current = panels;
 
-                return {
-                    id: `${panelName}-tab`,
-                    title: panelNameValue,
-                    content: panel.content as ReactElement,
-                    closable: behaviour.closable,
-                    group,
-                    cached: true
-                };
-            })
-        );
+        const tabs = panels.map(panel => {
+            const panelNameValue = panel.name.value ? panel.name.value : "Panel";
+            const panelName = `${name.toLowerCase()}_${panelNameValue.toLowerCase().replace(" ", "_")}`;
+            // const group = `${!behaviour.sortable ? panelName : "panel"}`;
+
+            return {
+                id: `${panelName}-tab`,
+                title: panelNameValue,
+                content: panel.content as ReactElement,
+                closable: behaviour.closable,
+                group: 'tab',
+                cached: true,
+                visible: !!panel.visible.value
+            };
+        }).filter(it => it.visible)
+
+        setTabs([...tabs]);
     };
 
     const getClassNames = () => {
@@ -83,15 +91,22 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
         });
     };
 
+
     useEffect(() => {
         initDockablePanels();
-    }, []);
+    }, [JSON.stringify(panels) !== JSON.stringify(panelsRef.current)]);
 
     useEffect(() => {
         setBehaviour(
             getBehavior(!!editable.value, !!dockable.value, !!floatable.value, !!sortable.value, !!closable.value)
         );
-    }, [editable, dockable, floatable, sortable, closable]);
+    }, [editable.value, dockable.value, floatable.value, sortable.value, closable.value]);
+
+    useEffect(() => {
+        if (savedLayout?.status === ValueStatus.Available) {
+            setLayout(savedLayout.value);
+        }
+    }, [savedLayout?.status, savedLayout?.value])
 
     return (
         <div className={getClassNames()} style={style}>
@@ -102,7 +117,7 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
                 sortable={behaviour.sortable}
                 closable={behaviour.closable}
                 tabs={tabs}
-                layout={savedLayout?.value}
+                layout={layout} 
                 onLayoutChange={layout => onLayoutChange(layout)}
                 deletedTabsEmpty={deletedTabsEmpty.value ? deletedTabsEmpty.value : "No removed tabs"}
                 deletedTabsTitle={deletedTabsTitle.value ? deletedTabsTitle.value : "Removed tabs"}
