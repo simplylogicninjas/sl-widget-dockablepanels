@@ -43,20 +43,22 @@ export function DockablePanels({
     const allTabs = useRef<CustomTabData[]>([]);
 
     const loadTab = (tab: TabBase) => {
-        const {id} = tab;
+        const { id } = tab;
         const tabData = allTabs.current.find(it => it.id === id);
 
-        return {...tabData!, closable};
-    }
+        return { ...tabData!, closable };
+    };
 
     const initLayout = () => {
         allTabs.current = tabs;
 
-        const layoutTabs: TabData[] = tabs.filter(it => it.visible).map(tab => {
-            return {
-                ...tab
-            };
-        });
+        const layoutTabs: TabData[] = tabs
+            .filter(it => it.visible)
+            .map(tab => {
+                return {
+                    ...tab
+                };
+            });
 
         setLayoutData({
             dockbox: {
@@ -121,12 +123,14 @@ export function DockablePanels({
     };
 
     const saveLayout = (layout: LayoutBase, direction: DropDirection | undefined) => {
-        if (direction !== 'active') {
-            if (!sortable && !dockable && !closable && !floatable) return;
+        if (direction !== "active") {
+            if (!sortable && !dockable && !closable && !floatable) {
+                return;
+            }
         }
-        
+
         setLayoutData({ ...layout } as LayoutData);
-        setSavedLayout({...layout})
+        setSavedLayout({ ...layout });
 
         if (onLayoutChange) {
             onLayoutChange(JSON.stringify(layout));
@@ -134,7 +138,7 @@ export function DockablePanels({
     };
 
     const loadLayout = (layout: string) => {
-        setLayoutData({...JSON.parse(layout)});
+        setLayoutData({ ...JSON.parse(layout) });
     };
 
     const updateLayoutBehaviour = (dock: DockLayout, groups: Group) => {
@@ -146,10 +150,10 @@ export function DockablePanels({
                     return {
                         ...it,
                         closable
-                    }
-                })
+                    };
+                });
             }
-        })
+        });
 
         Object.keys(groups).forEach(key => {
             const group = groups[key];
@@ -157,23 +161,23 @@ export function DockablePanels({
             group.disableDock = !dockable;
             group.floatable = floatable;
             group.panelExtra = (tabData, dockContext) =>
-            closable ? (
-                <RemovedTabsMenu
-                    allTabs={allTabs.current}
-                    dockLayout={dockLayoutRef.current}
-                    tabId={tabData.id ?? ""}
-                    dockContext={dockContext}
-                    deletedTabsEmpty={deletedTabsEmpty}
-                    deletedTabsTitle={deletedTabsTitle}
-                />
-            ) : (
-                <React.Fragment />
-            )
-        })
+                closable ? (
+                    <RemovedTabsMenu
+                        allTabs={allTabs.current}
+                        dockLayout={dockLayoutRef.current}
+                        tabId={tabData.id ?? ""}
+                        dockContext={dockContext}
+                        deletedTabsEmpty={deletedTabsEmpty}
+                        deletedTabsTitle={deletedTabsTitle}
+                    />
+                ) : (
+                    <React.Fragment />
+                );
+        });
 
-        setGroups({...groups});
-        setLayoutData({...layoutData});
-    }
+        setGroups({ ...groups });
+        setLayoutData({ ...layoutData });
+    };
 
     useEffect(() => {
         if (tabs.length && !initRef.current) {
@@ -191,30 +195,32 @@ export function DockablePanels({
         if (dockLayoutRef.current && groups) {
             updateLayoutBehaviour(dockLayoutRef.current, groups);
         }
-    }, [dockable, floatable, sortable, closable])
+    }, [dockable, floatable, sortable, closable]);
 
     useEffect(() => {
-        return (() => {
+        return () => {
             if (dockLayoutRef.current) {
                 dockLayoutRef.current = null;
             }
-        })
+        };
     }, []);
 
     return layoutData && groups ? (
-        <div className={classNames({
-            'dock-layout-container': true,
-            'notSortable': !sortable,
-            'notClosable': !closable,
-            'notResizable': !dockable
-        })}>
+        <div
+            className={classNames({
+                "dock-layout-container": true,
+                notSortable: !sortable,
+                notClosable: !closable,
+                notResizable: !dockable
+            })}
+        >
             <DockLayout
                 ref={dockLayoutRef}
                 style={{
                     width: "100%",
                     height: "100%"
                 }}
-                layout={{...layoutData}}
+                layout={{ ...layoutData }}
                 loadTab={loadTab}
                 groups={groups}
                 onLayoutChange={(newLayout, _, direction) => saveLayout(newLayout, direction)}

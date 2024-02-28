@@ -1,12 +1,12 @@
 export const getCircularReplacer = () => {
     const seen = new WeakSet();
     return (_: unknown, value: unknown) => {
-      if (typeof value === "object" && value !== null) {
-        if (seen.has(value)) {
-          return;
+        if (typeof value === "object" && value !== null) {
+            if (seen.has(value)) {
+                return;
+            }
+            seen.add(value);
         }
-        seen.add(value);
-      }
-      return value;
+        return value;
     };
-  };
+};

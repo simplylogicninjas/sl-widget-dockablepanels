@@ -1,5 +1,5 @@
 import { ReactElement, createElement, useState, useEffect, useRef } from "react";
-import {ValueStatus} from "mendix";
+import { ValueStatus } from "mendix";
 
 import { PanelsType, SLDockablePanelsContainerProps } from "../typings/SLDockablePanelsProps";
 
@@ -65,21 +65,23 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
     const initDockablePanels = () => {
         panelsRef.current = panels;
 
-        const tabs = panels.map(panel => {
-            const panelNameValue = panel.name.value ? panel.name.value : "Panel";
-            const panelName = `${name.toLowerCase()}_${panelNameValue.toLowerCase().replace(" ", "_")}`;
-            // const group = `${!behaviour.sortable ? panelName : "panel"}`;
+        const tabs = panels
+            .map(panel => {
+                const panelNameValue = panel.name.value ? panel.name.value : "Panel";
+                const panelName = `${name.toLowerCase()}_${panelNameValue.toLowerCase().replace(" ", "_")}`;
+                // const group = `${!behaviour.sortable ? panelName : "panel"}`;
 
-            return {
-                id: `${panelName}-tab`,
-                title: panelNameValue,
-                content: panel.content as ReactElement,
-                closable: behaviour.closable,
-                group: 'tab',
-                cached: true,
-                visible: !!panel.visible.value
-            };
-        }).filter(it => it.visible)
+                return {
+                    id: `${panelName}-tab`,
+                    title: panelNameValue,
+                    content: panel.content as ReactElement,
+                    closable: behaviour.closable,
+                    group: "tab",
+                    cached: true,
+                    visible: !!panel.visible.value
+                };
+            })
+            .filter(it => it.visible);
 
         setTabs([...tabs]);
     };
@@ -90,7 +92,6 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
             "dockable-panel-container": true
         });
     };
-
 
     useEffect(() => {
         initDockablePanels();
@@ -106,7 +107,7 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
         if (savedLayout?.status === ValueStatus.Available) {
             setLayout(savedLayout.value);
         }
-    }, [savedLayout?.status, savedLayout?.value])
+    }, [savedLayout?.status, savedLayout?.value]);
 
     return (
         <div className={getClassNames()} style={style}>
@@ -117,7 +118,7 @@ export function SLDockablePanels(props: SLDockablePanelsContainerProps): ReactEl
                 sortable={behaviour.sortable}
                 closable={behaviour.closable}
                 tabs={tabs}
-                layout={layout} 
+                layout={layout}
                 onLayoutChange={layout => onLayoutChange(layout)}
                 deletedTabsEmpty={deletedTabsEmpty.value ? deletedTabsEmpty.value : "No removed tabs"}
                 deletedTabsTitle={deletedTabsTitle.value ? deletedTabsTitle.value : "Removed tabs"}
